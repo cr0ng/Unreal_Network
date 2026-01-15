@@ -5,6 +5,7 @@
 #include "Net/UnrealNetwork.h"
 #include "Framework/MainHUD.h"
 #include "UI/ScoreHudWidget.h"
+#include "Characters/PlayerStateCharacter.h"
 
 void ATestPlayerState::AddMyScore(int32 Point)
 {
@@ -15,11 +16,28 @@ void ATestPlayerState::AddMyScore(int32 Point)
 	}
 }
 
+void ATestPlayerState::SetMyName(const FString& NewName)
+{
+	if (HasAuthority())
+	{
+		if (NewName.IsEmpty())
+		{
+			MyName = TEXT("MyPlayer");
+		}
+		else
+		{
+			MyName = NewName;
+		}
+		OnRep_MyName();
+	}
+}
+
 void ATestPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ATestPlayerState, MyScore);	// 모든 클라이언트에 리플리케이션
+	DOREPLIFETIME(ATestPlayerState, MyName);
 }
 
 void ATestPlayerState::OnRep_MyScore()
@@ -42,5 +60,16 @@ void ATestPlayerState::OnRep_MyScore()
 	if (ScoreHud.IsValid())
 	{
 		ScoreHud->UpdateScore(MyScore);
+	}
+}
+
+void ATestPlayerState::OnRep_MyName()
+{
+	UE_LOG(LogTemp, Log, TEXT("[%d]Name : %s"), GetPlayerId(), *MyName);
+
+	if (APlayerStateCharacter* Character = GetPawn<APlayerStateCharacter>())
+	{
+		//UE_LOG(LogTemp, Log, TEXT("APlayerStateCharacter 있음"));
+		Character->UpdateNamePlate(MyName);
 	}
 }

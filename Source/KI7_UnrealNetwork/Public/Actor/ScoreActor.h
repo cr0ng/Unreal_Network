@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "ScoreActor.generated.h"
 
+class USphereComponent;
+
 UCLASS()
 class KI7_UNREALNETWORK_API AScoreActor : public AActor
 {
@@ -22,6 +24,12 @@ protected:
 	void OnOverlapEvent(AActor* OverlappedActor, AActor* OtherActor);
 
 protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<USphereComponent> Collision = nullptr;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UStaticMeshComponent> Mesh = nullptr;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score")
 	int32 Point = 10;
 

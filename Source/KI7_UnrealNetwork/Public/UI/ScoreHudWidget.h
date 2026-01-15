@@ -7,6 +7,8 @@
 #include "ScoreHudWidget.generated.h"
 
 class UDataLineWidget;
+class UEditableTextBox;
+
 /**
  * 
  */
@@ -22,8 +24,18 @@ public:
 
 	void UpdateScore(int32 NewScore);
 
+private:
+	UFUNCTION()
+	void NameCommitted(const FText& Text, ETextCommit::Type CommitMethod);
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<UDataLineWidget> Score;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta = (BindWidget))
+	TObjectPtr<UEditableTextBox> NameInput;
+
+
+private:
+	TWeakObjectPtr<class APlayerStateCharacter> OwningPlayerCharacter = nullptr;
 };
