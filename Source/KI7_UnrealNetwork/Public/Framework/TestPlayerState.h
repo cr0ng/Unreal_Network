@@ -31,4 +31,6 @@ protected:
 protected:
 	UPROPERTY(ReplicatedUsing = OnRep_MyScore, BlueprintReadOnly, Category = "Data")
 	int32 MyScore = 0;
+
+	TWeakObjectPtr<class UScoreHudWidget> ScoreHud = nullptr;
 };
