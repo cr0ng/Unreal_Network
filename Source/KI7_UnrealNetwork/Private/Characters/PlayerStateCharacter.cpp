@@ -24,7 +24,18 @@ void APlayerStateCharacter::BeginPlay()
 	if (NameWidgetComponent && NameWidgetComponent->GetWidget())
 	{
 		NameWidget = Cast<UDataLineWidget>(NameWidgetComponent->GetWidget());
+
+		//ATestPlayerState* PS = GetPlayerState<ATestPlayerState>();
+		//if (PS)
+		//{
+		//	NameWidget->UpdateName(FText::FromString(FString::Printf(TEXT("[%d]"), PS->GetPlayerId())));
+		//}
+		//else
+		//{
+		//	NameWidget->UpdateName(FText::FromString(TEXT("-")));
+		//}
 		NameWidget->UpdateName(FText::FromString(TEXT("-")));
+
 	}
 }
 
