@@ -12,7 +12,7 @@ public class KI7_UnrealNetwork : ModuleRules
 			"EnhancedInput", "UMG", "Niagara", "NetCore" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {
-         "Slate", "SlateCore" });
+         "Slate", "SlateCore", "GameplayAbilities", "GameplayTags", "GameplayTasks" });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
