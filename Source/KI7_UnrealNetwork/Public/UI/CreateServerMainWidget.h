@@ -6,13 +6,11 @@
 #include "Blueprint/UserWidget.h"
 #include "CreateServerMainWidget.generated.h"
 
+class UButton;
+class UEditableTextBox;
 /**
  * 
  */
-
-class UButton;
-class UEditableTextBox;
-
 UCLASS()
 class KI7_UNREALNETWORK_API UCreateServerMainWidget : public UUserWidget
 {

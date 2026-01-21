@@ -13,11 +13,12 @@ UCLASS()
 class KI7_UNREALNETWORK_API UTestAttributeSet : public UAttributeSet
 {
 	GENERATED_BODY()
-
+	
 public:
 	UTestAttributeSet();
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
@@ -37,5 +38,3 @@ protected:
 	UFUNCTION()
 	virtual void OnRep_MaxHealth(const FGameplayAttributeData& OldHealth);
 };
-
-

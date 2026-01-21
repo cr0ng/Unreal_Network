@@ -37,4 +37,5 @@ protected:
 
 private:
 	TWeakObjectPtr<class ATestGameState> CachedGameState = nullptr;
+
 };

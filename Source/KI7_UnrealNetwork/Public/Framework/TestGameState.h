@@ -32,7 +32,7 @@ protected:
 	float GameElapsedTime = 0.0f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Game Data")
-	float GameDuration = 10.0f;	// 게임 1판 시간. GameMode에 추가하는 것이 적합(지금은 테스트용) 
+	float GameDuration = 10.0f;	// 게임 1판 시간. GameMode에 추가하는 것이 적합함(지금은 테스트용)
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game Data")
 	float GameRemainingTime = 0.0f;

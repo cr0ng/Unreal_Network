@@ -9,9 +9,9 @@
 // Sets default values
 APlayerStateCharacter::APlayerStateCharacter()
 {
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	
 	NameWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("NamePlate"));
 	NameWidgetComponent->SetupAttachment(GetRootComponent());
 	NameWidgetComponent->SetRelativeLocation(FVector::UpVector * 105.0f);
@@ -35,7 +35,6 @@ void APlayerStateCharacter::BeginPlay()
 		//	NameWidget->UpdateName(FText::FromString(TEXT("-")));
 		//}
 		NameWidget->UpdateName(FText::FromString(TEXT("-")));
-
 	}
 }
 
@@ -90,7 +89,7 @@ void APlayerStateCharacter::SetMyName(const FString& NewName)
 	else
 	{
 		Server_SetMyName(NewName);
-	}
+	}	
 }
 
 void APlayerStateCharacter::UpdateNamePlate(const FString& NewName)
@@ -108,3 +107,4 @@ void APlayerStateCharacter::TestAddScore()
 		Server_AddScore(10);
 	}
 }
+

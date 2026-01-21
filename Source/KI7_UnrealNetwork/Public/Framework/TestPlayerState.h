@@ -44,6 +44,6 @@ protected:
 	UPROPERTY(ReplicatedUsing = OnRep_MyName, BlueprintReadOnly, Category = "Data")
 	FString MyName;
 
-	TWeakObjectPtr<class UScoreHudWidget> ScoreHud = nullptr;
 
+	TWeakObjectPtr<class UScoreHudWidget> ScoreHud = nullptr;
 };

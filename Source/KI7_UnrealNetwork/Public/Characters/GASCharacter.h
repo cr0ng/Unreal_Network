@@ -9,25 +9,36 @@
 #include "GASCharacter.generated.h"
 
 UCLASS()
-class KI7_UNREALNETWORK_API AGASCharacter : public ACharacter
+class KI7_UNREALNETWORK_API AGASCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	AGASCharacter();
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override { return ASC; }
 
 protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void OnHealthChanged(const FOnAttributeChangeData& Data);
+	virtual void OnHealthChanged(const FOnAttributeChangeData& Data);
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void TestActivateAbility();
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GAS")
 	TObjectPtr<class UAbilitySystemComponent> ASC = nullptr;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<class UBilboardWidgetComponent> Widget = nullptr;
+
 	UPROPERTY()
 	TObjectPtr<class UTestAttributeSet> ResourceAttributeSet = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "GAS")
+	TSubclassOf<UGameplayAbility> AbilityClass = nullptr;
 };

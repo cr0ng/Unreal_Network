@@ -1,17 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Actor/ScoreActor.h"
-
+#include "Actors/ScoreActor.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/Character.h"
 #include "Framework/TestPlayerState.h"
 
-// Sets default values
 AScoreActor::AScoreActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 	bReplicates = true;
 
 	Collision = CreateDefaultSubobject<USphereComponent>(TEXT("Collision"));
@@ -23,15 +20,15 @@ AScoreActor::AScoreActor()
 	Mesh->SetRelativeLocation(FVector::UpVector * 100.0f);
 }
 
-// Called when the game starts or when spawned
 void AScoreActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	if (HasAuthority())
 	{
 		OnActorBeginOverlap.AddDynamic(this, &AScoreActor::OnOverlapEvent);
 	}
+	
 }
 
 void AScoreActor::OnOverlapEvent(AActor* OverlappedActor, AActor* OtherActor)
@@ -50,5 +47,3 @@ void AScoreActor::OnOverlapEvent(AActor* OverlappedActor, AActor* OtherActor)
 		}
 	}
 }
-
-

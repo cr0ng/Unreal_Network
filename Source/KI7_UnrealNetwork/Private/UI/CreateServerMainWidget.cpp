@@ -24,7 +24,6 @@ void UCreateServerMainWidget::NativeConstruct()
 	{
 		DisconnectButton->OnClicked.AddDynamic(this, &UCreateServerMainWidget::OnDisconnectButtonClicked);
 	}
-
 }
 
 void UCreateServerMainWidget::OnCreateButtonClicked()
@@ -36,7 +35,6 @@ void UCreateServerMainWidget::OnCreateButtonClicked()
 	}
 }
 
-
 void UCreateServerMainWidget::OnJoinButtonClicked()
 {
 	UTestMultiplayGameInstance* GI = Cast<UTestMultiplayGameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
@@ -46,11 +44,12 @@ void UCreateServerMainWidget::OnJoinButtonClicked()
 		if (InputIPAddress)
 		{
 			FString InputIP = InputIPAddress->GetText().ToString();
-			if (InputIP.IsEmpty())
+			if (!InputIP.IsEmpty())
 			{
 				IPAddress = InputIP;
 			}
 		}
+
 		GI->JoinServer(IPAddress);
 	}
 }

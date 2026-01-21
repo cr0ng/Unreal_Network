@@ -8,7 +8,6 @@
 
 class UDataLineWidget;
 class UEditableTextBox;
-
 /**
  * 
  */
@@ -21,7 +20,6 @@ protected:
 	virtual void NativeConstruct() override;
 
 public:
-
 	void UpdateScore(int32 NewScore);
 
 private:
@@ -34,7 +32,6 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<UEditableTextBox> NameInput;
-
 
 private:
 	TWeakObjectPtr<class APlayerStateCharacter> OwningPlayerCharacter = nullptr;

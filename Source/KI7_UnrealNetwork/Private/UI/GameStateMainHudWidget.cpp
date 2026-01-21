@@ -15,7 +15,7 @@ void UGameStateMainHudWidget::NativeConstruct()
 void UGameStateMainHudWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
-
+	
 	if (!CachedGameState.IsValid())
 	{
 		CachedGameState = Cast<ATestGameState>(UGameplayStatics::GetGameState(this));
@@ -27,7 +27,6 @@ void UGameStateMainHudWidget::NativeTick(const FGeometry& MyGeometry, float InDe
 
 void UGameStateMainHudWidget::UpdateTimeDisplay()
 {
-
 	if (CachedGameState.IsValid())
 	{
 		int32 Total = FMath::FloorToInt(CachedGameState->GetGameElapsedTime());
@@ -39,9 +38,7 @@ void UGameStateMainHudWidget::UpdateTimeDisplay()
 		Minutes = Total / 60;
 		Seconds = Total % 60;
 		RemainingTimeText->SetText(FText::FromString(FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds)));
-		
 	}
-
 }
 
 void UGameStateMainHudWidget::UpdateGameOverDisplay()

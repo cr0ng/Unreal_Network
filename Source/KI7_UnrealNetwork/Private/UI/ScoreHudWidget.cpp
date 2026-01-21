@@ -10,6 +10,7 @@
 void UScoreHudWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+
 	Score->UpdateName(FText::FromString(TEXT("점수")));
 	Score->UpdateIntValue(0);
 
@@ -21,9 +22,9 @@ void UScoreHudWidget::UpdateScore(int32 NewScore)
 	Score->UpdateIntValue(NewScore);
 }
 
-void UScoreHudWidget::NameCommitted(const FText& Text, ETextCommit::Type CommitMethod)
+ void UScoreHudWidget::NameCommitted(const FText& Text, ETextCommit::Type CommitMethod)
 {
-	UE_LOG(LogTemp, Log, TEXT("NameCommitted"));
+	 UE_LOG(LogTemp, Log, TEXT("NameCommitted"));
 	if (CommitMethod == ETextCommit::OnEnter)
 	{
 		UE_LOG(LogTemp, Log, TEXT("ETextCommit::OnEnter"));

@@ -13,6 +13,8 @@ void ATestGameState::BeginPlay()
 {
 	Super::BeginPlay();
 	GameRemainingTime = GameDuration;
+
+	//PlayerArray.Num();	// 접속인원수
 }
 
 void ATestGameState::Tick(float DeltaTime)
@@ -25,7 +27,8 @@ void ATestGameState::Tick(float DeltaTime)
 		//UE_LOG(LogTemp, Log, TEXT("Time update : %.2f"), GameElapsedTime);
 
 		GameRemainingTime -= DeltaTime;
-		if (GameRemainingTime <=0.0f)
+
+		if (GameRemainingTime < 0.0f)
 		{
 			GameRemainingTime = 0.0f;
 			bGameOver = true;
@@ -40,5 +43,4 @@ void ATestGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
 	DOREPLIFETIME(ATestGameState, GameElapsedTime);
 	DOREPLIFETIME(ATestGameState, GameRemainingTime);
 	DOREPLIFETIME(ATestGameState, bGameOver);
-
 }

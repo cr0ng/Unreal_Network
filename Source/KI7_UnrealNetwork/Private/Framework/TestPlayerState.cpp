@@ -2,9 +2,9 @@
 
 
 #include "Framework/TestPlayerState.h"
-#include "Net/UnrealNetwork.h"
 #include "Framework/MainHUD.h"
 #include "UI/ScoreHudWidget.h"
+#include "Net/UnrealNetwork.h"
 #include "Characters/PlayerStateCharacter.h"
 
 void ATestPlayerState::AddMyScore(int32 Point)
@@ -43,7 +43,7 @@ void ATestPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 void ATestPlayerState::OnRep_MyScore()
 {
 	// UI 갱신
-	UE_LOG(LogTemp, Log, TEXT("[%d]Score : %d"),GetPlayerId(), MyScore);
+	UE_LOG(LogTemp, Log, TEXT("[%d]Score : %d"), GetPlayerId(), MyScore);	
 	if (!ScoreHud.IsValid())
 	{
 		if (GetPlayerController())
@@ -53,7 +53,7 @@ void ATestPlayerState::OnRep_MyScore()
 			if (HUD && HUD->GetMainHudWidget().IsValid())
 			{
 				//UE_LOG(LogTemp, Log, TEXT("HUD와 HUD위젯도 있음"));
-				ScoreHud = Cast<UScoreHudWidget>(HUD->GetMainHudWidget().Get());
+				ScoreHud = Cast<UScoreHudWidget>(HUD->GetMainHudWidget().Get());				
 			}
 		}
 	}

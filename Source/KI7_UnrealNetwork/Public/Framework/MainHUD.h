@@ -7,7 +7,6 @@
 #include "MainHUD.generated.h"
 
 class UUserWidget;
-
 /**
  * 
  */

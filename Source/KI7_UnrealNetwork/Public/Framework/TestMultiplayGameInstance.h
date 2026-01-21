@@ -27,7 +27,8 @@ public:
 
 private:
 	UFUNCTION()
-	void HandleNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString);
+	void HandleNetworkFailure(
+		UWorld* World, UNetDriver* NetDirever, ENetworkFailure::Type FailureType, const FString& ErrorString);
 
 	UFUNCTION()
 	void HandleTravelFailure(UWorld* World, ETravelFailure::Type FailureType, const FString& ErrorString);
@@ -38,13 +39,13 @@ protected:
 	FString ServerIP;
 
 	// 게임 시작시 로드할 맵
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Test")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Test")
 	TSoftObjectPtr<UWorld> MainLevelAsset = nullptr;
 
 	// 서버 생성시 로드할 맵
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Test")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Test")
 	TSoftObjectPtr<UWorld> ServerLevelAsset = nullptr;
-	
+
 	// 최대 접속가능한 플레이어 수
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Test")
 	int32 MaxPlayers = 2;
